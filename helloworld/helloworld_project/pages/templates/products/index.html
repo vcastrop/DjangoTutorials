@@ -1,0 +1,41 @@
+@extends('layouts.app')
+{% extends 'pages/base.html' %}
+
+{% block title %} {{title}} {% endblock %}
+
+{% block header_title %} {{subtitle}} {% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <!-- Bootstrap row to arrange product cards in a grid. -->
+
+    {% for product in products %}
+    <!-- Loop through each product in the 'products' list from the view. -->
+
+    <div class="col-md-4 col-lg-3 mb-2">
+        <!-- Bootstrap columns for responsive card sizing on different screen widths. -->
+
+        <div class="card">
+            <!-- Bootstrap card to display a single product. -->
+
+            <img src="https://static.djangoproject.com/img/logos/django-logo-positive.svg" class="card-img-top img-card">
+            <!-- Placeholder product image (can be replaced with a dynamic field). -->
+
+            <div class="card-body text-center">
+                <!-- Card body, centered text. -->
+
+                <a href="{% url 'show' id=product.id %}" class="btn bg-primary text-white">
+                    {{product.name}}
+                </a>
+                <!-- Button that links to the product's detail page.
+                     {% url 'show' id=product.id %} generates the correct route dynamically. -->
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- End of products loop. -->
+</div>
+
+{% endblock %}
+<!-- End of content block. -->

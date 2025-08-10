@@ -1,0 +1,20 @@
+.bg-secondary {
+    background-color: #2c3e50 !important; /* Sets the background color to a dark blue-gray shade, overriding other styles with !important */
+}
+
+.copyright {
+    background-color: #1a252f; /* Sets the background color of the copyright section to a very dark blue */
+}
+
+.bg-primary {
+    background-color: #1abc9c !important; /* Sets the primary background color to a teal green shade, overriding other styles */
+}
+
+nav {
+    font-weight: 700; /* Makes all text inside <nav> bold */
+}
+
+.img-card {
+    height: 18vw; /* Sets the image height to 18% of the viewport width, keeping it responsive */
+    object-fit: cover; /* Ensures the image covers its container without stretching, cropping if necessary */
+}

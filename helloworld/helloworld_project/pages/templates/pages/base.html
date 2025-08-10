@@ -1,0 +1,80 @@
+{% load static %} <!-- Loads Django's static files template tag so we can reference static assets like CSS or JS -->
+<!doctype html> <!-- Declares the document type as HTML5 -->
+<html lang="en"> <!-- Opens the HTML element and sets the language to English -->
+<head> <!-- Head section: contains meta info, styles, and title -->
+    <meta charset="utf-8" /> <!-- Sets the character encoding to UTF-8 (supports most characters) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Makes the page responsive to device width -->
+
+    <!-- Links Bootstrap CSS from a CDN for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+          rel="stylesheet" crossorigin="anonymous" />
+
+    <!-- Links a custom CSS file stored in the Django static folder -->
+    <link href="{% static 'pages/app.css' %}" rel="stylesheet" />
+
+    <!-- Page title block; Django's block allows overriding in child templates -->
+    <title>{% block title %}'Online Store'{% endblock %}</title>
+</head>
+
+<body> <!-- Body section: contains all visible content -->
+
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4"> <!-- Navbar with Bootstrap classes: expands on large screens, dark text, secondary background, padding -->
+        <div class="container"> <!-- Centers and contains navbar content -->
+
+            <!-- Brand name/logo -->
+            <a class="navbar-brand" href="{%url 'home'%}">Online Store</a> <!-- Clickable logo/text that usually links to homepage -->
+
+            <!-- Button for toggling navbar on small screens -->
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                <!-- The toggler icon will be automatically inserted by Bootstrap -->
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> <!-- Collapsible navbar section, expands or collapses depending on screen size -->
+    <div class="navbar-nav ms-auto"> <!-- Navigation links container, "ms-auto" pushes them to the right -->
+        <a class="nav-link active" href="{% url 'home'%}">Home</a> <!-- Active navigation link for the Home page -->
+        <a class="nav-link active" href="{% url 'about'%}">About</a> <!-- Active navigation link for the About page -->
+        <a class="nav-link active" href="{% url 'contact'%}">Contact</a>  <!-- Active navigation link for the Contact page -->
+        <a class="nav-link active" href="{% url 'index'%}">Products</a>  <!-- Active navigation link for the Products page -->
+    </div>
+</div>
+</div> <!-- Closes the main navbar container -->
+</nav> <!-- Closes the navigation bar -->
+
+<header class="masthead bg-primary text-white text-center py-4"> <!-- Main header with primary background, white text, centered content, and padding -->
+    <div class="container d-flex align-items-center flex-column"> <!-- Centered container with flex layout in a column direction -->
+        <h2>{% block header_title %}'A Laravel EAFIT App'{% endblock %}</h2> <!-- Django template block for the header title, can be overridden in child templates -->
+    </div>
+</header> <!-- End of header section -->
+
+<!-- Main content container -->
+<div class="container my-4"> <!-- Bootstrap container with vertical margin -->
+    {% block content %} {% endblock %} <!-- Django block for inserting main page content -->
+</div>
+
+<!-- Footer section -->
+{% block footer %} <!-- Django template block for the footer, can be customized -->
+<div class="copyright py-4 text-center text-white"> <!-- Footer with padding, centered text, and white color -->
+    <div class="container"> <!-- Centered Bootstrap container -->
+        <small> <!-- Small text for copyright -->
+            Copyright -
+            <a class="text-reset fw-bold text-decoration-none" target="_blank"
+               href="https://twitter.com/danielgarax"> <!-- Link that keeps default text color, bold style, and no underline -->
+                Daniel Correa
+            </a>
+        </small>
+    </div>
+</div> <!-- End of footer -->
+{% endblock %}
+
+<!-- Bootstrap JavaScript bundle for interactive components like the collapsible navbar -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous">
+</script>
+
+</body> <!-- Closes the body of the document -->
+</html> <!-- Closes the HTML document -->
+

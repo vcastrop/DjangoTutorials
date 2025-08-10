@@ -1,0 +1,11 @@
+@extends('layouts.app') <!-- Laravel Blade syntax to extend a base layout called "app" (This seems unused in Django and may be leftover code) -->
+
+{% extends 'pages/base.html' %} <!-- Django template tag to extend from 'pages/base.html', inheriting its structure and blocks -->
+
+{% block title %}'Home Page - Online Store'{% endblock %} <!-- Overrides the "title" block from the base template with a custom page title -->
+
+{% block content %} <!-- Starts the "content" block to insert page-specific HTML -->
+    <div class="text-center"> <!-- Bootstrap utility class to center the text -->
+        Welcome to the application <!-- Visible text shown to the user -->
+    </div>
+{% endblock %} <!-- Ends the "content" block -->

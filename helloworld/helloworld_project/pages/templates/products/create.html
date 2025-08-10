@@ -1,0 +1,54 @@
+{% extends 'pages/base.html' %}
+{% block title %} {{title}} {% endblock %}
+{% block content %}
+    <!-- Contenedor principal -->
+    <div class="container">
+        <div class="row justify-content-center"> <!-- Centra el contenido horizontalmente -->
+            <div class="col-md-8"> <!-- Columna de ancho medio -->
+                <div class="card"> <!-- Tarjeta Bootstrap -->
+
+                    <!-- Encabezado de la tarjeta -->
+                    <div class="card-header">Create product</div>
+
+                    <!-- Cuerpo de la tarjeta -->
+                    <div class="card-body">
+
+                        <!-- Mostrar errores del formulario si existen -->
+                        {% if form.errors %}
+                            <ul id="errors" class="alert alert-danger list-unstyled">
+                                {% for field, errors in form.errors.items %}
+                                    {% for error in errors %}
+                                        <li>{{ error }}</li> <!-- Mensaje de error -->
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                        <!-- Formulario para crear producto -->
+                        <form method="POST" action="{% url 'form' %}">
+                            {% csrf_token %} <!-- Token de seguridad contra CSRF -->
+
+                            <!-- Campo para el nombre del producto -->
+                            <input type="text"
+                                   class="form-control mb-2"
+                                   placeholder="Enter name"
+                                   name="name"
+                                   value="{{ form.data.name }}" />
+
+                            <!-- Campo para el precio del producto -->
+                            <input type="text"
+                                   class="form-control mb-2"
+                                   placeholder="Enter price"
+                                   name="price"
+                                   value="{{ form.data.price }}" />
+
+                            <!-- Botón de envío -->
+                            <input type="submit" class="btn btn-primary" value="Send" />
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
